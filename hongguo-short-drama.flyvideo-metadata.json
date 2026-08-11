@@ -3,7 +3,7 @@
   "id": "video-metadata.hongguo-short-drama",
   "name": "红果短剧元数据",
   "type": "video_metadata",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "cyinsh666",
   "description": "通过红果短剧官网网页内部 Loader，为网盘短剧提供节目元数据。该接口不是正式开放 API，可能随上游改版失效。",
   "defaultEnabled": false,
@@ -186,10 +186,18 @@
       }
     }
   },
+  "matching": {
+    "fallbackStrategy": "first_candidate_episode_count_matches",
+    "episodeCountSources": [
+      "explicit_query",
+      "local_video_episodes"
+    ],
+    "episodeCountMatchMode": "any"
+  },
   "limits": {
     "maxResponseBytes": 2097152,
     "maxSearchItems": 10,
-    "maxConcurrentRequests": 1,
-    "minRequestIntervalMs": 600
+    "maxConcurrentRequests": 2,
+    "minRequestIntervalMs": 500
   }
 }
