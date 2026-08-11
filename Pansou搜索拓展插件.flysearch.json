@@ -4,7 +4,7 @@
   "name": "Pansou",
   "type": "search_extension",
   "version": "1.0.1",
-  "author": "Flymby",
+  "author": "cyinsh666",
   "description": "通过 Pansou API 搜索网盘分享资源，可用于聚合搜索和追剧来源页的查找更多入口，并支持按结果来源网盘筛选。",
   "defaultEnabled": false,
   "supportedScenes": [

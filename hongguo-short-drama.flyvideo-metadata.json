@@ -4,7 +4,7 @@
   "name": "红果短剧元数据",
   "type": "video_metadata",
   "version": "1.0.0",
-  "author": "Flymby",
+  "author": "cyinsh666",
   "description": "通过红果短剧官网网页内部 Loader，为网盘短剧提供节目元数据。该接口不是正式开放 API，可能随上游改版失效。",
   "defaultEnabled": false,
   "allowedDomains": [
