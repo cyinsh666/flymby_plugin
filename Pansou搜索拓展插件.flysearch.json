@@ -1,0 +1,130 @@
+{
+  "manifestVersion": 1,
+  "id": "pansou",
+  "name": "Pansou",
+  "type": "search_extension",
+  "version": "1.0.1",
+  "author": "Flymby",
+  "description": "通过 Pansou API 搜索网盘分享资源，可用于聚合搜索和追剧来源页的查找更多入口，并支持按结果来源网盘筛选。",
+  "defaultEnabled": false,
+  "supportedScenes": [
+    "aggregate_search",
+    "follow_source_search"
+  ],
+  "settings": [
+    {
+      "key": "baseUrl",
+      "label": "基础地址",
+      "type": "url",
+      "required": true,
+      "placeholder": "https://pansou.example.com",
+      "description": "Pansou 服务的访问地址，不要以斜杠结尾。"
+    }
+  ],
+  "filters": [
+    {
+      "key": "sourceType",
+      "label": "网盘",
+      "field": "sourceType",
+      "type": "select",
+      "description": "按结果来源网盘筛选，候选项由搜索结果动态生成。"
+    }
+  ],
+  "health": {
+    "method": "GET",
+    "url": "{{settings.baseUrl}}/api/health",
+    "okField": "status",
+    "okValue": "ok",
+    "timeoutMs": 10000
+  },
+  "search": {
+    "method": "GET",
+    "url": "{{settings.baseUrl}}/api/search",
+    "query": {
+      "kw": "{{搜索词}}",
+      "res": "merge",
+      "src": "all"
+    },
+    "timeoutMs": 30000
+  },
+  "keyword": {
+    "aggregate_search": "{{context.keyword}}",
+    "follow_source_search": "{{context.title}}"
+  },
+  "response": {
+    "successCodePath": "code",
+    "successCodeValues": [
+      0,
+      200
+    ],
+    "messagePath": "message",
+    "total": "data.total",
+    "mergedByType": "data.merged_by_type",
+    "items": "data.results",
+    "fallbackItems": [
+      "data.list",
+      "data.items"
+    ]
+  },
+  "mapping": {
+    "title": [
+      "title",
+      "name",
+      "file_name",
+      "filename",
+      "note"
+    ],
+    "note": [
+      "note",
+      "content",
+      "description"
+    ],
+    "url": [
+      "url",
+      "link",
+      "share_url",
+      "shareUrl"
+    ],
+    "password": [
+      "password",
+      "pwd",
+      "pass",
+      "extract_code",
+      "code"
+    ],
+    "datetime": [
+      "datetime",
+      "date",
+      "time",
+      "created_at"
+    ],
+    "sourceType": [
+      "cloud_type",
+      "cloudType",
+      "type"
+    ],
+    "sourceName": [
+      "source",
+      "channel",
+      "plugin",
+      "from"
+    ],
+    "fileCount": [
+      "file_count",
+      "fileCount"
+    ]
+  },
+  "previewLimit": {
+    "aggregate_search": 5,
+    "follow_source_search": 20
+  },
+  "actions": [
+    "open_detail",
+    "open_url",
+    "copy_url",
+    "copy_password"
+  ],
+  "limits": {
+    "maxResponseBytes": 1048576
+  }
+}
