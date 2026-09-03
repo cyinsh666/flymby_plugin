@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 1,
+  "id": "flymby.tgtodrive",
+  "name": "TgToDrive",
+  "type": "tgtodrive",
+  "version": "1.0.0",
+  "author": "Flymby",
+  "description": "连接用户自部署的 TgToDrive 服务，在发现页使用资源搜索、转存、离线下载和网盘整理功能。",
+  "defaultEnabled": false,
+  "settings": [
+    {
+      "key": "base_url",
+      "label": "地址",
+      "type": "url",
+      "required": true,
+      "placeholder": "http://服务器地址:端口",
+      "description": "填写服务根地址，不附加 /login 或 /api"
+    },
+    {
+      "key": "username",
+      "label": "用户名",
+      "type": "text",
+      "required": true,
+      "placeholder": "TTD 管理账号",
+      "description": "TgToDrive Web 管理账号"
+    },
+    {
+      "key": "password",
+      "label": "密码",
+      "type": "password",
+      "required": true,
+      "placeholder": "TTD 管理密码",
+      "description": "只保存在本机安全存储中"
+    }
+  ]
+}
